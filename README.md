@@ -1,2 +1,2 @@
 # Running-Man
-数字媒体第四次实验
+基于Kinect的3D体感交互跑酷游戏
