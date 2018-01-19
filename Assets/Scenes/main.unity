@@ -411,7 +411,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 428421801}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 4.95, y: 3.8, z: 0}
+  m_LocalPosition: {x: 5.99, y: 4.15, z: 0}
   m_LocalScale: {x: 1, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -462,10 +462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ca17e2a7c997947b9d7531751a78f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 15
+  jumpForce: 10
   gravity: 20
   trackWidth: 6
   changeTrackSpeed: 10
+  animator: {fileID: 0}
 --- !u!54 &536460878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -549,6 +550,16 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 95000011610634314, guid: 0a36d45e1b007e14b884de828f3b6938,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4675f30ca1f2ec4419c0a84c62a76e47, type: 2}
+    - target: {fileID: 95000011610634314, guid: 0a36d45e1b007e14b884de828f3b6938,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a36d45e1b007e14b884de828f3b6938, type: 2}
   m_IsPrefabParent: 0
@@ -595,9 +606,9 @@ MonoBehaviour:
   tracks:
   - {fileID: 1402841955456162, guid: c7e738775d75ae349bf15b8c5a2bc19e, type: 2}
   - {fileID: 1778519218835890, guid: dea317978b8d86c4dbc8e25974903608, type: 2}
-  initialSpeed: 1
-  speedRate: 0.1
-  acceleratedNumber: 1
+  initialSpeed: 10
+  speedRate: 1
+  acceleratedNumber: 3
   length: 200
   count: 0
   currentSpeed: 0

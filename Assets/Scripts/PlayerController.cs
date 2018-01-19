@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private AvatarController avatarCtrl;
 
     private GestureDetect gestureListener;
+    public Animator animator;
 
     private void Awake()
     {
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
         target = 0;
         // get the gestures listener
         gestureListener = GestureDetect.Instance;
+        animator = GameObject.Find("Basic_BanditPrefab").GetComponent<Animator>();
+        Sprint();
     }
 
     void Update()
@@ -91,23 +94,17 @@ public class PlayerController : MonoBehaviour
                 transform.position.y,
                 zPos
             );
-
-        if (gestureListener.IsJump())
+        if (jump)//跳跃和下蹲都只有在人物脚在平面上的时候才能做
         {
-            body.velocity = new Vector3(0, jumpForce, 0);
-        }
-        if (jump)
-        {
-            // if (gestureListener.IsSwipeLeft())
-            // {
-            //     Debug.Log("Jumpping");
-            //     body.velocity = new Vector3(0, jumpForce, 0);
-            // }
-
-            // if (Input.GetButtonDown("Jump"))
-            // {
-            //     body.velocity = new Vector3(0, jumpForce, 0);
-            // }
+            if (gestureListener.IsJump())
+            {
+                Jump();
+                body.velocity = new Vector3(0, jumpForce, 0);
+            }
+            if (gestureListener.IsSquat()) 
+            {
+                Squat();
+            }
         }
     }
 
@@ -117,6 +114,36 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
 
         trackCtrl.Stop();
+    }
+
+    public void Idle()
+    {
+        //animator = GetComponent<Animator>();
+        animator.SetBool("Walk", false);
+        animator.SetBool("SprintJump", false);
+        animator.SetBool("SprintSlide", false);
+    }
+
+    public void Sprint()
+    {
+        //animator = GetComponent<Animator>();
+        animator.SetBool("Walk", false);
+        animator.SetBool("SprintJump", true);
+        animator.SetBool("SprintSlide", false);
+    }
+
+    public void Jump()
+    {
+        //animator = GetComponent<Animator>();
+        // animator.SetBool("Walk", false);
+        // animator.SetBool("SprintJump", false);
+        // animator.SetBool("SprintSlide", true);
+        animator.Play("JUMP00");
+    }
+
+    public void Squat()
+    {
+        animator.Play("SLIDE00");
     }
 
 
