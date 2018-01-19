@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     //主角跳跃的速度
     public float jumpForce;
     //主角的重力
@@ -20,41 +21,67 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody body;
     private TrackController trackCtrl;
 
-    private void Awake() {
+    private AvatarController avatarCtrl;
+
+    private GestureDetect gestureListener;
+
+    private void Awake()
+    {
         body = GetComponent<Rigidbody>();
         foot = transform.Find("Foot");
         trackCtrl = GameObject.Find("TrackController").GetComponent<TrackController>();
+        avatarCtrl = GameObject.Find("AvatarController").GetComponent<AvatarController>();
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         jump = false;
 
         hasChangedPosition = false;
 
         target = 0;
+        // get the gestures listener
+        gestureListener = GestureDetect.Instance;
     }
-	
-	void Update () {
-        float input = Input.GetAxis("Horizontal");
 
-        if (input!= 0 && !hasChangedPosition) {
+    void Update()
+    {
+        // float input = Input.GetAxis("Horizontal");
+
+        // if (input != 0 && !hasChangedPosition)
+        // {
+        //     target = target + Mathf.Sign(input) * trackWidth;
+        //     target = Mathf.Clamp(target, -trackWidth, trackWidth);
+
+
+        //     hasChangedPosition = true;
+        // }
+
+        // if (input == 0 && hasChangedPosition)
+        // {
+        //     hasChangedPosition = false;
+        // }
+
+        float input = avatarCtrl.deltaPosition();
+        if (input != 0 && !hasChangedPosition)
+        {
             target = target + Mathf.Sign(input) * trackWidth;
             target = Mathf.Clamp(target, -trackWidth, trackWidth);
-            
-
             hasChangedPosition = true;
         }
-
-        if(input == 0 && hasChangedPosition) {
+        if (input == 0 && hasChangedPosition)
+        {
             hasChangedPosition = false;
         }
 
-        jump = Physics.Linecast(transform.position, foot.position, 
+        //Debug.Log(input.ToString());
+        jump = Physics.Linecast(transform.position, foot.position,
             1 << LayerMask.NameToLayer("Ground"));
-	}
+    }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         body.AddForce(Vector3.down * gravity);
 
         float zPos = Mathf.MoveTowards(transform.position.z, target, changeTrackSpeed * Time.deltaTime);
@@ -65,24 +92,39 @@ public class PlayerController : MonoBehaviour {
                 zPos
             );
 
-        if (jump) {
-            if (Input.GetButtonDown("Jump")) {
-                body.velocity = new Vector3(0, jumpForce, 0);
-            }
+        if (gestureListener.IsJump())
+        {
+            body.velocity = new Vector3(0, jumpForce, 0);
+        }
+        if (jump)
+        {
+            // if (gestureListener.IsSwipeLeft())
+            // {
+            //     Debug.Log("Jumpping");
+            //     body.velocity = new Vector3(0, jumpForce, 0);
+            // }
+
+            // if (Input.GetButtonDown("Jump"))
+            // {
+            //     body.velocity = new Vector3(0, jumpForce, 0);
+            // }
         }
     }
 
 
-    private void Death() {
+    private void Death()
+    {
         Time.timeScale = 0;
 
         trackCtrl.Stop();
     }
 
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
 
-        if (other.CompareTag("Obstacle")) {
+        if (other.CompareTag("Obstacle"))
+        {
             Death();
         }
     }
