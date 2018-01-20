@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 84327006}
   - component: {fileID: 84327005}
   - component: {fileID: 84327009}
+  - component: {fileID: 84327010}
   m_Layer: 0
   m_Name: KinectController
   m_TagString: Untagged
@@ -230,8 +231,29 @@ MonoBehaviour:
     width: 140
     height: 420
   guiSkin: {fileID: 0}
-  planeObj: {fileID: 0}
+  planeObj: {fileID: 1530235175}
   hiddenWindow: 0
+--- !u!114 &84327010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 84327004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a669d15f0035bbf4889c8092b5bcd201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  showHandCursor: 1
+  gripHandTexture: {fileID: 2800000, guid: 475d892be250472448901e2ac7e4f3da, type: 3}
+  releaseHandTexture: {fileID: 2800000, guid: deab68507f779a144b807ddc9587f2fe, type: 3}
+  normalHandTexture: {fileID: 2800000, guid: 55b9da46e4eef3f4cafab36e66796aeb, type: 3}
+  smoothFactor: 10
+  allowHandClicks: 1
+  controlMouseCursor: 1
+  controlMouseDrag: 0
+  debugText: {fileID: 0}
 --- !u!1 &108635687
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,10 +733,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ca17e2a7c997947b9d7531751a78f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 0
-  gravity: 0
-  trackWidth: 0
-  changeTrackSpeed: 0
+  jumpForce: 10
+  gravity: 20
+  trackWidth: 6
+  changeTrackSpeed: 10
   animator: {fileID: 0}
 --- !u!54 &536460878
 Rigidbody:
@@ -1676,6 +1698,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1530235175 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1721514620798394, guid: c7e738775d75ae349bf15b8c5a2bc19e,
+    type: 2}
+  m_PrefabInternal: {fileID: 784622550}
 --- !u!1001 &1567248344
 Prefab:
   m_ObjectHideFlags: 0
