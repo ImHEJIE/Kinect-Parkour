@@ -240,7 +240,9 @@ public class GestureDetect : MonoBehaviour, KinectGestures.GestureListenerInterf
         else if (gesture == KinectGestures.Gestures.Stop)
             stop = true;
         else if (gesture == KinectGestures.Gestures.Wave)
+        {
             wave = true;
+        }
         else if (gesture == KinectGestures.Gestures.Jump)
             jump = true;
         else if (gesture == KinectGestures.Gestures.Squat)

@@ -82,10 +82,10 @@ public class GUIScript : MonoBehaviour
         if (!gestureListener)
             return;
 
-        if (gestureListener.IsWave())
-        {
-            HideWindow(!hiddenWindow);
-        }
+        // if (gestureListener.IsWave())
+        // {
+        //     HideWindow(!hiddenWindow);
+        // }
 
     }
 
