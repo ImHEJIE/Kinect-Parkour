@@ -44,7 +44,7 @@ public class GUIScript : MonoBehaviour
 
         GUILayout.Space(30);
         isGravityOn = GUILayout.Toggle(isGravityOn, "Gravity On");
-        SetGravity(isGravityOn);
+        //SetGravity(isGravityOn);
 
         GUILayout.Space(30);
         isControlMouseOn = GUILayout.Toggle(isControlMouseOn, "Control Mouse");
@@ -56,7 +56,7 @@ public class GUIScript : MonoBehaviour
         if (resetObjectsClicked)
         {
             //label1Text = "Resetting objects...";
-            ResetObjects(resetObjectsClicked);
+            //ResetObjects(resetObjectsClicked);
         }
 
         GUILayout.Label(label1Text);
@@ -106,15 +106,15 @@ public class GUIScript : MonoBehaviour
 
 
     // set gravity on or off
-    private void SetGravity(bool gravityOn)
-    {
-        GrabDropScript compGrabDrop = GetComponent<GrabDropScript>();
+    // private void SetGravity(bool gravityOn)
+    // {
+    //     GrabDropScript compGrabDrop = GetComponent<GrabDropScript>();
 
-        if (compGrabDrop != null && compGrabDrop.useGravity != gravityOn)
-        {
-            compGrabDrop.useGravity = gravityOn;
-        }
-    }
+    //     if (compGrabDrop != null && compGrabDrop.useGravity != gravityOn)
+    //     {
+    //         compGrabDrop.useGravity = gravityOn;
+    //     }
+    // }
 
     // make plane visible or not
     private void SetPlaneVisible(bool planeOn)
@@ -140,18 +140,18 @@ public class GUIScript : MonoBehaviour
     }
 
     // reset objects if needed
-    private void ResetObjects(bool resetObjs)
-    {
-        if (resetObjs)
-        {
-            GrabDropScript compGrabDrop = GetComponent<GrabDropScript>();
+    // private void ResetObjects(bool resetObjs)
+    // {
+    //     if (resetObjs)
+    //     {
+    //         GrabDropScript compGrabDrop = GetComponent<GrabDropScript>();
 
-            if (compGrabDrop != null)
-            {
-                compGrabDrop.resetObjects = true;
-            }
-        }
-    }
+    //         if (compGrabDrop != null)
+    //         {
+    //             compGrabDrop.resetObjects = true;
+    //         }
+    //     }
+    // }
 
     // hide options window 改为public 让gesture script可以操纵
     public void HideWindow(bool hideWin)
