@@ -21,40 +21,32 @@ public class TrackController : MonoBehaviour {
     //用来保存跑道当前的速度
     [HideInInspector]
     public float currentSpeed;
-    
 
-
-    //用来保存跑道是否已经在当前轮加速过
-    private bool hasAccelerated;
+    //currentSpeed的备份数据
+    private float speed;
 
     private void Awake() {
         count = 0;
 
         currentSpeed = initialSpeed * Time.deltaTime;
-
-        hasAccelerated = false;
+        speed = currentSpeed;
     }
 
-    private void Update() {
-        if(count % acceleratedNumber == 0) {
-            if(!hasAccelerated && count > 0) {
-
-                currentSpeed = currentSpeed * speedRate;
-
-                hasAccelerated = true;
-
-                Debug.Log("Change");
-            }
-        } else {
-            hasAccelerated = false;
-        }
-    }
 
     public void RunOver() {
         count++;
+
+        if (count % acceleratedNumber == 0) {
+            currentSpeed = currentSpeed * speedRate;
+            speed = currentSpeed;
+        }
     }
 
     public void Stop() {
         currentSpeed = 0;
+    }
+
+    public void Restart() {
+        currentSpeed = speed;
     }
 }
