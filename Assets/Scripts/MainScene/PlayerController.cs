@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private Transform foot;
     private Rigidbody body;
-    private TrackController trackCtrl;
+    private GameController gameCtrl;
 
     private AvatarController avatarCtrl;
 
@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         foot = transform.Find("Foot");
-        trackCtrl = GameObject.Find("TrackController").GetComponent<TrackController>();
+
+        gameCtrl = GameObject.Find("GameController").GetComponent<GameController>();
         avatarCtrl = GameObject.Find("AvatarController").GetComponent<AvatarController>();
     }
 
@@ -108,12 +109,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    private void Death()
-    {
+    public void Death() {
         Time.timeScale = 0;
+    }
 
-        trackCtrl.Stop();
+    public void Restart() {
+        Time.timeScale = 1;
+    }
+
+    public void Pause() {
+        Time.timeScale = 0;
     }
 
     public void Idle()
@@ -152,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Obstacle"))
         {
-            Death();
+            gameCtrl.Gameover();
         }
     }
 }
