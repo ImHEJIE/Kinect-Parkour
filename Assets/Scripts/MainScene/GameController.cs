@@ -18,6 +18,10 @@ public class GameController : MonoBehaviour {
         pausedMenu.SetActive(false);
     }
 
+    private void Ready() {
+
+    }
+
     public void Gameover() {
         playerCtrl.Death();
 
