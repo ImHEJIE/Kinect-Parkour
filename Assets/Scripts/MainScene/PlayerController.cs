@@ -98,16 +98,24 @@ public class PlayerController : MonoBehaviour
             );
         if (grouded)//跳跃和下蹲都只有在人物脚在平面上的时候才能做
         {
-            if (gestureListener.IsJump())
+            if (avatarCtrl.isJumping())
             {
                 Jump();
                 body.velocity = new Vector3(0, jumpForce, 0);
             }
-            if (gestureListener.IsSquat()) 
+            if (avatarCtrl.isCrouch())
             {
                 Squat();
-
             }
+            //if (gestureListener.IsJump())
+            //{
+            //    Jump();
+            //    body.velocity = new Vector3(0, jumpForce, 0);
+            //}
+            //if (gestureListener.IsSquat()) 
+            //{
+            //    Squat();
+            //}
         }
     }
 
