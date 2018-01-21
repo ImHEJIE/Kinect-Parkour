@@ -842,11 +842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5784991aea20bd4458bc16fadd99f5a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   instruction: {fileID: 0}
   menu: {fileID: 0}
-=======
->>>>>>> feature-AsanCai
 --- !u!224 &1052340043
 RectTransform:
   m_ObjectHideFlags: 0
