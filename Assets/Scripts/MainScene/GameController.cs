@@ -48,8 +48,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void Gameover()
-    {
+
+    private void Ready() {
+
+    }
+
+    public void Gameover() {
         playerCtrl.Death();
 
         trackCtrl.Stop();
