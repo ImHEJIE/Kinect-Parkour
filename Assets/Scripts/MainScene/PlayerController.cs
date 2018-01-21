@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     //变换跑道的速度
     public float changeTrackSpeed;
 
-    private bool jump;
+    private bool grouded;
     private bool hasChangedPosition;
     private float target;
 
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        jump = false;
+        grouded = false;
 
         hasChangedPosition = false;
 
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         // }
 
         float input = avatarCtrl.deltaPosition();
+
         if (input != 0 && !hasChangedPosition)
         {
             target = target + Mathf.Sign(input) * trackWidth;
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Debug.Log(input.ToString());
-        jump = Physics.Linecast(transform.position, foot.position,
+        grouded = Physics.Linecast(transform.position, foot.position,
             1 << LayerMask.NameToLayer("Ground"));
     }
 
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour
                 transform.position.y,
                 zPos
             );
-        if (jump)//跳跃和下蹲都只有在人物脚在平面上的时候才能做
+        if (grouded)//跳跃和下蹲都只有在人物脚在平面上的时候才能做
         {
             if (gestureListener.IsJump())
             {
@@ -105,6 +106,7 @@ public class PlayerController : MonoBehaviour
             if (gestureListener.IsSquat()) 
             {
                 Squat();
+
             }
         }
     }
