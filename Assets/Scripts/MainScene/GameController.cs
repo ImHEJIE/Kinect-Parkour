@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     private GameObject pausedMenu;
+    private GameObject restartMenu;
 
     private TrackController trackCtrl;
     private PlayerController playerCtrl;
@@ -19,6 +21,9 @@ public class GameController : MonoBehaviour
 
         pausedMenu = GameObject.Find("PausedMenu");
         pausedMenu.SetActive(false);
+
+        restartMenu = GameObject.Find("RestartMenu");
+        restartMenu.SetActive(false);
     }
 
     void Start()
@@ -48,13 +53,17 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //游戏结束调用的函数
     public void Gameover()
     {
         playerCtrl.Death();
 
         trackCtrl.Stop();
+
+        restartMenu.SetActive(true);
     }
 
+    //游戏暂停调研的函数
     public void Pause()
     {
         playerCtrl.Pause();
@@ -64,12 +73,24 @@ public class GameController : MonoBehaviour
         pausedMenu.SetActive(true);
     }
 
-    public void Restart()
+    //游戏继续调研的函数
+    public void Continue()
     {
         playerCtrl.Restart();
 
         trackCtrl.Restart();
 
         pausedMenu.SetActive(false);
+    }
+
+    //游戏重新开始调用的游戏
+    public void Restart() {
+        
+
+        SceneManager.LoadScene("main", LoadSceneMode.Single);
+
+        playerCtrl.Restart();
+
+        trackCtrl.Restart();
     }
 }

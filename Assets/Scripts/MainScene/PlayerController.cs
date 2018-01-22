@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour
     private AvatarController avatarCtrl;
 
     private GestureDetect gestureListener;
-    public Animator animator;
+    private Animator animator;
+
+    private bool arrived;
 
     private void Awake()
     {
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
         avatarCtrl = GameObject.Find("AvatarController").GetComponent<AvatarController>();
     }
 
-    // Use this for initialization
+
     void Start()
     {
         grouded = false;
@@ -51,63 +53,62 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // float input = Input.GetAxis("Horizontal");
+        arrived = Mathf.Abs(transform.position.z - target) < 0.1;
 
-        // if (input != 0 && !hasChangedPosition)
-        // {
-        //     target = target + Mathf.Sign(input) * trackWidth;
-        //     target = Mathf.Clamp(target, -trackWidth, trackWidth);
+        //使用键盘当作输入
+        float input = Input.GetAxis("Horizontal");
 
-
-        //     hasChangedPosition = true;
-        // }
-
-        // if (input == 0 && hasChangedPosition)
-        // {
-        //     hasChangedPosition = false;
-        // }
-
-        float input = avatarCtrl.deltaPosition();
-
-        if (input != 0 && !hasChangedPosition)
-        {
+        //使用kinect作为输入
+        //float input = avatarCtrl.deltaPosition();
+        if (input != 0 && !hasChangedPosition && arrived) {
             target = target + Mathf.Sign(input) * trackWidth;
             target = Mathf.Clamp(target, -trackWidth, trackWidth);
             hasChangedPosition = true;
         }
-        if (input == 0 && hasChangedPosition)
-        {
+
+        if (input == 0 && hasChangedPosition) {
+
             hasChangedPosition = false;
         }
 
-        //Debug.Log(input.ToString());
         grouded = Physics.Linecast(transform.position, foot.position,
             1 << LayerMask.NameToLayer("Ground"));
     }
 
     private void FixedUpdate()
     {
+        //给角色添加重力
         body.AddForce(Vector3.down * gravity);
 
         float zPos = Mathf.MoveTowards(transform.position.z, target, changeTrackSpeed * Time.deltaTime);
-
         transform.position = new Vector3(
                 transform.position.x,
                 transform.position.y,
                 zPos
             );
-        if (grouded)//跳跃和下蹲都只有在人物脚在平面上的时候才能做
-        {
 
-            if (avatarCtrl.isJumping())
-            {
+        //跳跃和下蹲都只有在人物脚在平面上的时候才能做
+        //变道过程中不能跳跃或者蹲下
+        if (grouded && arrived) {
+
+            if (Input.GetButton("Jump")) {
                 Jump();
                 body.velocity = new Vector3(0, jumpForce, 0);
             }
-            if (avatarCtrl.isCrouch())
-            {
+
+            if (Input.GetAxis("Vertical") < 0) {
                 Squat();
             }
+
+            //使用Kinect作为输入
+            //if (avatarCtrl.isJumping()) {
+            //    Jump();
+            //    body.velocity = new Vector3(0, jumpForce, 0);
+            //}
+
+            //if (avatarCtrl.isCrouch()) {
+            //    Squat();
+            //}
         }
     }
 
