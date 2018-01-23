@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private AvatarController avatarCtrl;
 
     private GestureDetect gestureListener;
-    private Animator animator;
+    public Animator animator;
 
     //用于检测是否完成变道
     private bool arrived;
@@ -48,12 +48,15 @@ public class PlayerController : MonoBehaviour
         target = 0;
         // get the gestures listener
         gestureListener = GestureDetect.Instance;
-        animator = GameObject.Find("Basic_BanditPrefab").GetComponent<Animator>();
-        Sprint();
+
+        animator.SetFloat("MoveSpeed", 1.5f);
     }
 
     void Update()
     {
+        //是否着地来决定角色的动画状态机
+        animator.SetBool("Grounded", grouded);
+
         arrived = Mathf.Abs(transform.position.z - target) < 0.1;
 
         //使用键盘当作输入
@@ -97,7 +100,6 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButton("Jump"))
             {
-                Jump();
                 body.velocity = new Vector3(0, jumpForce, 0);
                 GetComponent<AudioSource>().Play();
             }
@@ -124,30 +126,6 @@ public class PlayerController : MonoBehaviour
         //Time.timeScale = 0;
     }
 
-    public void Idle()
-    {
-        //animator = GetComponent<Animator>();
-        animator.SetBool("Walk", false);
-        animator.SetBool("SprintJump", false);
-        animator.SetBool("SprintSlide", false);
-    }
-
-    public void Sprint()
-    {
-        //animator = GetComponent<Animator>();
-        animator.SetBool("Walk", false);
-        animator.SetBool("SprintJump", true);
-        animator.SetBool("SprintSlide", false);
-    }
-
-    public void Jump()
-    {
-        //animator = GetComponent<Animator>();
-        // animator.SetBool("Walk", false);
-        // animator.SetBool("SprintJump", false);
-        // animator.SetBool("SprintSlide", true);
-        animator.Play("JUMP00");
-    }
 
     public void Squat()
     {
