@@ -25,7 +25,7 @@ public class TrackController : MonoBehaviour {
     //currentSpeed的备份数据
     private float speed;
 
-    private void Start() {
+    private void Awake() {
         count = 0;
 
         currentSpeed = initialSpeed * Time.deltaTime;
