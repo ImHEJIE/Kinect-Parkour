@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                Restart();
+                Continue();
                 isPause = false;
             }
 
