@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     //变换跑道的速度
     public float changeTrackSpeed;
     public bool useKinectInput;//是否使用Kinect输入
+    public Animator animator;
 
     private bool grouded;
     private bool hasChangedPosition;
@@ -25,7 +26,8 @@ public class PlayerController : MonoBehaviour
     private AvatarController avatarCtrl;
 
     private GestureDetect gestureListener;
-    public Animator animator;
+    private CapsuleCollider RunCollider;
+    private CapsuleCollider SquatCollider;
 
     private bool arrived;
 
@@ -36,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
         gameCtrl = GameObject.Find("GameController").GetComponent<GameController>();
         avatarCtrl = GameObject.Find("AvatarController").GetComponent<AvatarController>();
+        Component[] CapsuleColliders = GetComponents(typeof(CapsuleCollider));
+        RunCollider = (CapsuleCollider)CapsuleColliders[0];
+        SquatCollider = (CapsuleCollider)CapsuleColliders[1];
     }
 
 
@@ -117,6 +122,11 @@ public class PlayerController : MonoBehaviour
                 {
                     Squat();
                 }
+                else
+                {
+                    RunCollider.isTrigger = true;
+                    SquatCollider.isTrigger = false;
+                }
             }
             else
             {
@@ -130,6 +140,11 @@ public class PlayerController : MonoBehaviour
                 {
                     Squat();
                 }
+                else
+                {
+                    RunCollider.isTrigger = true;
+                    SquatCollider.isTrigger = false;
+                }
             }
         }
     }
@@ -141,6 +156,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Squat()
     {
+        RunCollider.isTrigger = false;
+        SquatCollider.isTrigger = true;
         animator.Play("SLIDE00");
     }
 
