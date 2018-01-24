@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float trackWidth;
     //变换跑道的速度
     public float changeTrackSpeed;
+    public bool useKinectInput;//是否使用Kinect输入
 
     private bool grouded;
     private bool hasChangedPosition;
@@ -58,11 +59,18 @@ public class PlayerController : MonoBehaviour
 
         arrived = Mathf.Abs(transform.position.z - target) < 0.1;
 
-        //使用键盘当作输入
-        float input = Input.GetAxis("Horizontal");
+        float input;
+        if (!useKinectInput)
+        {
+            //使用键盘当作输入
+            input = Input.GetAxis("Horizontal");
+        }
+        else
+        {
+            //使用kinect作为输入
+            input = avatarCtrl.deltaPosition();
+        }
 
-        //使用kinect作为输入
-        //float input = avatarCtrl.deltaPosition();
         if (input != 0 && !hasChangedPosition && arrived)
         {
             target = target + Mathf.Sign(input) * trackWidth;
@@ -96,46 +104,41 @@ public class PlayerController : MonoBehaviour
         //变道过程中不能跳跃或者蹲下
         if (grouded && arrived)
         {
-
-            if (Input.GetButton("Jump"))
+            if (!useKinectInput)
             {
-                body.velocity = new Vector3(0, jumpForce, 0);
-                GetComponent<AudioSource>().Play();
-            }
+                //使用键盘当作输入
+                if (Input.GetButton("Jump"))
+                {
+                    body.velocity = new Vector3(0, jumpForce, 0);
+                    GetComponent<AudioSource>().Play();
+                }
 
-            if (Input.GetAxis("Vertical") < 0)
+                if (Input.GetAxis("Vertical") < 0)
+                {
+                    Squat();
+                }
+            }
+            else
             {
-                Squat();
+                //使用Kinect作为输入
+                if (avatarCtrl.isJumping())
+                {
+                    body.velocity = new Vector3(0, jumpForce, 0);
+                    GetComponent<AudioSource>().Play();
+                }
+                if (avatarCtrl.isCrouch())
+                {
+                    Squat();
+                }
             }
-
-            //使用Kinect作为输入
-            //if (avatarCtrl.isJumping()) {
-            //    Jump();
-            //    body.velocity = new Vector3(0, jumpForce, 0);
-            //}
-
-            //if (avatarCtrl.isCrouch()) {
-            //    Squat();
-            //}
         }
     }
 
 
-    public void Death() {
+    public void Death()
+    {
         //Time.timeScale = 0;
     }
-
-    public void Idle()
-    {
-        //animator = GetComponent<Animator>();
-        animator.SetBool("Walk", false);
-        animator.SetBool("SprintJump", false);
-        animator.SetBool("SprintSlide", false);
-    }
-
-
-
-
     public void Squat()
     {
         animator.Play("SLIDE00");
