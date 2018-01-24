@@ -91,4 +91,8 @@ public class GameController : MonoBehaviour
 
         //trackCtrl.Restart();
     }
+    //退出游戏
+    public void Exit() {
+        Application.Quit();
+    }
 }
