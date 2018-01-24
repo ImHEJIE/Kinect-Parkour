@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private GestureDetect gestureListener;
     private Animator animator;
 
-    //用于检测是否完成变道
     private bool arrived;
 
     private void Awake()
@@ -114,7 +113,15 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Death() {
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
+    }
+
+    public void Restart() {
+        Time.timeScale = 1;
+    }
+
+    public void Pause() {
+        Time.timeScale = 0;
     }
 
     public void Idle()
@@ -153,7 +160,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Obstacle"))
         {
-            Death();
             gameCtrl.Gameover();
         }
     }
