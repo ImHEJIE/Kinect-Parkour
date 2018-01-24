@@ -46,7 +46,14 @@ public class TrackController : MonoBehaviour {
         currentSpeed = 0;
     }
 
-    public void Restart() {
+    public void Continue() {
         currentSpeed = speed;
+    }
+
+    public void Restart() {
+        count = 0;
+
+        currentSpeed = initialSpeed * Time.deltaTime;
+        speed = currentSpeed;
     }
 }

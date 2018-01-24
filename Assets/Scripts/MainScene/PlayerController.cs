@@ -120,17 +120,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
+
     public void Death() {
-        Time.timeScale = 0;
-    }
-
-    public void Restart() {
-        Time.timeScale = 1;
-    }
-
-    public void Pause() {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void Idle()
@@ -141,13 +133,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("SprintSlide", false);
     }
 
-    public void Sprint()
-=======
-    public void Death()
->>>>>>> beta
-    {
-        //Time.timeScale = 0;
-    }
+
 
 
     public void Squat()
@@ -161,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Obstacle"))
         {
+            Death();
             gameCtrl.Gameover();
         }
     }
