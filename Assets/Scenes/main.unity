@@ -1930,13 +1930,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracks:
+  - {fileID: 1878541240720218, guid: 74db64a98c05c46429ca685b360d1a6d, type: 2}
   - {fileID: 1475892614224976, guid: 37a8348370ea4374d9d16fc4c4a42661, type: 2}
   - {fileID: 1304410315338890, guid: 4a22fea38f02e914c8ea9f1cf505128e, type: 2}
-  - {fileID: 1961063969064950, guid: b02e94674bbcf0043b2362f6f2e2bf62, type: 2}
-  - {fileID: 1878541240720218, guid: 74db64a98c05c46429ca685b360d1a6d, type: 2}
   - {fileID: 1778274832349638, guid: 16bf5c6a5aaaaf6429804ece9c46939b, type: 2}
   - {fileID: 1359806180583152, guid: 5785d5ba9e2ec4b4c9e83305cee553a7, type: 2}
   - {fileID: 1835621366859478, guid: 99b5c8477406fe6498932f14d5c7e1e1, type: 2}
+  - {fileID: 1961063969064950, guid: b02e94674bbcf0043b2362f6f2e2bf62, type: 2}
   initialSpeed: 10
   speedRate: 1.5
   acceleratedNumber: 3
