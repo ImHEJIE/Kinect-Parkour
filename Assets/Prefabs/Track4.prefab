@@ -126,6 +126,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4577911592767258}
+  - component: {fileID: 65479117097462102}
   m_Layer: 0
   m_Name: LongBridge2
   m_TagString: Obstacle
@@ -159,6 +160,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4741816127129386}
+  - component: {fileID: 65435560155093510}
   m_Layer: 8
   m_Name: Bridge
   m_TagString: Untagged
@@ -189,6 +191,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4043357400005428}
+  - component: {fileID: 65837832940963436}
   m_Layer: 8
   m_Name: Bridge (2)
   m_TagString: Untagged
@@ -222,6 +225,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4385044334890174}
+  - component: {fileID: 65040088399523050}
   m_Layer: 8
   m_Name: Bridge (1)
   m_TagString: Untagged
@@ -546,6 +550,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4818217042922900}
+  - component: {fileID: 65678492349863756}
   m_Layer: 0
   m_Name: LongBridge1
   m_TagString: Obstacle
@@ -835,7 +840,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1878541240720218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -138.12802, y: 0.55319965, z: 55.67465}
+  m_LocalPosition: {x: -50.963165, y: 0.55319965, z: 39.007587}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4709526853869628}
@@ -2514,6 +2519,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65040088399523050
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206893979147522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65053484325500680
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2610,6 +2627,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65435560155093510
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1139225133755140}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65474229576819316
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2622,6 +2651,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65479117097462102
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132676446116620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65595891090090592
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2646,6 +2687,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65678492349863756
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711192284227738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65691723942639358
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2706,6 +2759,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65837832940963436
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186096601643884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65846226021283942
 BoxCollider:
   m_ObjectHideFlags: 1

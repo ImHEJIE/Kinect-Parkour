@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4290619420797888}
+  - component: {fileID: 65479097515774678}
   m_Layer: 8
   m_Name: Bridge (2)
   m_TagString: Untagged
@@ -156,6 +157,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4214718101895604}
+  - component: {fileID: 65159840758208380}
   m_Layer: 8
   m_Name: Bridge
   m_TagString: Untagged
@@ -412,6 +414,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4705381899122596}
+  - component: {fileID: 65134905682318000}
   m_Layer: 8
   m_Name: Bridge (1)
   m_TagString: Untagged
@@ -2318,6 +2321,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65134905682318000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709656145671098}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
+--- !u!65 &65159840758208380
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239766379892674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65167096125263700
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2390,6 +2417,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65479097515774678
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162455695608460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1.11, z: 3}
+  m_Center: {x: 0, y: 2.27, z: 0}
 --- !u!65 &65643011282322218
 BoxCollider:
   m_ObjectHideFlags: 1
