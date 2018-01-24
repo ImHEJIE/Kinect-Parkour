@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
             target = target + Mathf.Sign(input) * trackWidth;
             target = Mathf.Clamp(target, -trackWidth, trackWidth);
             hasChangedPosition = true;
+            GetComponent<AudioSource>().Play();
         }
 
         if (input == 0 && hasChangedPosition)
