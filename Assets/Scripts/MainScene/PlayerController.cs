@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private AvatarController avatarCtrl;
 
     private GestureDetect gestureListener;
-    private Animator animator;
+    public Animator animator;
 
     private bool arrived;
 
@@ -47,12 +47,15 @@ public class PlayerController : MonoBehaviour
         target = 0;
         // get the gestures listener
         gestureListener = GestureDetect.Instance;
-        animator = GameObject.Find("Basic_BanditPrefab").GetComponent<Animator>();
-        Sprint();
+
+        animator.SetFloat("MoveSpeed", 1.5f);
     }
 
     void Update()
     {
+        //是否着地来决定角色的动画状态机
+        animator.SetBool("Grounded", grouded);
+
         arrived = Mathf.Abs(transform.position.z - target) < 0.1;
 
         //使用键盘当作输入
@@ -60,13 +63,15 @@ public class PlayerController : MonoBehaviour
 
         //使用kinect作为输入
         //float input = avatarCtrl.deltaPosition();
-        if (input != 0 && !hasChangedPosition && arrived) {
+        if (input != 0 && !hasChangedPosition && arrived)
+        {
             target = target + Mathf.Sign(input) * trackWidth;
             target = Mathf.Clamp(target, -trackWidth, trackWidth);
             hasChangedPosition = true;
         }
 
-        if (input == 0 && hasChangedPosition) {
+        if (input == 0 && hasChangedPosition)
+        {
 
             hasChangedPosition = false;
         }
@@ -89,14 +94,17 @@ public class PlayerController : MonoBehaviour
 
         //跳跃和下蹲都只有在人物脚在平面上的时候才能做
         //变道过程中不能跳跃或者蹲下
-        if (grouded && arrived) {
+        if (grouded && arrived)
+        {
 
-            if (Input.GetButton("Jump")) {
-                Jump();
+            if (Input.GetButton("Jump"))
+            {
                 body.velocity = new Vector3(0, jumpForce, 0);
+                GetComponent<AudioSource>().Play();
             }
 
-            if (Input.GetAxis("Vertical") < 0) {
+            if (Input.GetAxis("Vertical") < 0)
+            {
                 Squat();
             }
 
@@ -112,6 +120,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     public void Death() {
         Time.timeScale = 0;
     }
@@ -133,21 +142,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Sprint()
+=======
+    public void Death()
+>>>>>>> beta
     {
-        //animator = GetComponent<Animator>();
-        animator.SetBool("Walk", false);
-        animator.SetBool("SprintJump", true);
-        animator.SetBool("SprintSlide", false);
+        //Time.timeScale = 0;
     }
 
-    public void Jump()
-    {
-        //animator = GetComponent<Animator>();
-        // animator.SetBool("Walk", false);
-        // animator.SetBool("SprintJump", false);
-        // animator.SetBool("SprintSlide", true);
-        animator.Play("JUMP00");
-    }
 
     public void Squat()
     {
