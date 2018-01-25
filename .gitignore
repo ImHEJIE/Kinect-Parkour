@@ -33,6 +33,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-*.meta
 Assets/Prefabs/Resources/Animations/unitychan_SLIDE00.fbx.meta
 ProjectSettings/ProjectVersion.txt
