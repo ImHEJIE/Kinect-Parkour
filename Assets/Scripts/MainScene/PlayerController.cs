@@ -120,20 +120,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    public void Death() {
+    public void Death()
+    {
         //Time.timeScale = 0;
     }
-
-    public void Idle()
-    {
-        //animator = GetComponent<Animator>();
-        animator.SetBool("Walk", false);
-        animator.SetBool("SprintJump", false);
-        animator.SetBool("SprintSlide", false);
-    }
-
-
 
 
     public void Squat()
@@ -147,7 +137,6 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Obstacle"))
         {
-            Death();
             gameCtrl.Gameover();
         }
     }
