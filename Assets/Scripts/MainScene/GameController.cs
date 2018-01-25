@@ -88,8 +88,6 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("main", LoadSceneMode.Single);
 
         Time.timeScale = 1;
-
-        //trackCtrl.Restart();
     }
     //退出游戏
     public void Exit() {

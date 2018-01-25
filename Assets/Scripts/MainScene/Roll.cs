@@ -23,6 +23,8 @@ public class Roll : MonoBehaviour {
     }
 
     private void Update() {
+        //Debug.Log("Roll：" + trackCtrl.currentSpeed);
+
         transform.position = new Vector3(
             transform.position.x + trackCtrl.currentSpeed,
             transform.position.y,
