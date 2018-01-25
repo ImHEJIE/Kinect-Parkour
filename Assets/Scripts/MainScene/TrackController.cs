@@ -22,14 +22,17 @@ public class TrackController : MonoBehaviour {
     [HideInInspector]
     public float currentSpeed;
 
-    //currentSpeed的备份数据
-    private float speed;
-
     private void Awake() {
         count = 0;
 
-        currentSpeed = initialSpeed * Time.deltaTime;
-        speed = currentSpeed;
+        if(DataTransformer.initialSpeed == 0f) {
+            currentSpeed = initialSpeed * Time.deltaTime;
+
+            DataTransformer.initialSpeed = currentSpeed;
+            DataTransformer.currentSpeed = currentSpeed;
+        } else {
+            currentSpeed = DataTransformer.initialSpeed;
+        }
     }
 
 
@@ -38,7 +41,8 @@ public class TrackController : MonoBehaviour {
 
         if (count % acceleratedNumber == 0) {
             currentSpeed = currentSpeed * speedRate;
-            speed = currentSpeed;
+
+            DataTransformer.currentSpeed = currentSpeed;
         }
     }
 
@@ -47,13 +51,6 @@ public class TrackController : MonoBehaviour {
     }
 
     public void Continue() {
-        currentSpeed = speed;
-    }
-
-    public void Restart() {
-        count = 0;
-
-        currentSpeed = initialSpeed * Time.deltaTime;
-        speed = currentSpeed;
+        currentSpeed = DataTransformer.currentSpeed;
     }
 }
