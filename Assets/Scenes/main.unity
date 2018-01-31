@@ -846,7 +846,7 @@ MonoBehaviour:
   gravity: 30
   trackWidth: 6
   changeTrackSpeed: 10
-  useKinectInput: 1
+  useKinectInput: 0
   animator: {fileID: 469825601}
 --- !u!136 &486779298
 CapsuleCollider:
