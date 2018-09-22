@@ -21,6 +21,6 @@
 
 ## 作品截图
 
-![1537579342534](http://github.com/djybbb/Running-Man/Images/1.png)
+![1537579342534](https://github.com/djybbb/Running-Man/raw/master/Images/1.png)
 
-![1537579513034](http://github.com/djybbb/Running-Man/Images/2.png)
+![1537579513034](https://github.com/djybbb/Running-Man/raw/master/Images/2.png)
